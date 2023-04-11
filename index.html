@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName">
+        <br>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" autofocus>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="name.surname@ikubinfo.com">
+        <br>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" step="0.5" min="0" max="50">
+        <br>
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" id="genderMale"><label for="genderMale">Male</label>
+        <input type="radio" name="gender" id="genderFemale"><label for="genderFemale">Female</label>
+        <br>
+        <label for="education">Education</label>
+        <input type="checkbox" name="edu" value="BACHELOR" id="eduB"><label for="eduB">Bachelor</label>
+        <input type="checkbox" name="edu" value="PROFESIONAL_MASTER" id="eduPM"><label for="eduPM">MP</label>
+        <input type="checkbox" name="edu" value="MSC" id="eduMSC"><label for="eduMSC">Msc</label>
+        <br>
+        <label for="nat">Nationality</label>
+        <select name="nat" id="nat">
+            <option value="">Select</option>
+            <option value="KS">Kosovo</option>
+            <option value="AL">Albania</option>
+        </select>
+        <br>
+        <label for="hobbies">Hobbies</label>
+        <input type="text" name="hobbies" id="hobbies" list="hobbiesOptions">
+        <datalist id="hobbiesOptions">
+            <option value="Basketball">Basketball</option>
+            <option value="Football">Football</option>
+            <option value="Running">Running</option>
+            <option value="Jogging">Jogging</option>
+        </datalist>
+        <br>
+        <label for="birthDate">Birth date</label>
+        <input type="date" name="birthDate" id="birthDate" min="1973-01-01">
+        <br>
+        <label for="pass">Password</label>
+        <input
+            type="password" 
+            name="pass" 
+            id="pass" 
+            required
+            minlength="8"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9].*"
+        >
+        <br>
+        <ul>
+            <li>Minimum length 8 character</li>
+            <li>Must have at least 1 uppercase letter</li>
+            <li>Must have at least 1 lowercase letter</li>
+            <li>Must have at least 1 number</li>
+        </ul>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
