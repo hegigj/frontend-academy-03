@@ -1,94 +1,62 @@
-<h1>HTml</h1>
-<!-- <h2>HTml</h2>
-<h3>HTml</h3>
-<h4>HTml</h4>
-<h5>HTml</h5>
-<h6>HTml</h6> -->
-<p>x<sup>2</sup>+3x-2=0</p>
-<p>log<sub>10</sub>2=100</p>
-<ul>
-    <li>Item</li>
-    <li>Item</li>
-    <li>Item</li>
-    <li>Item</li>
-    <li>Item</li>
-</ul>
-<ol type="I">
-    <li>Ordered</li>
-    <li>Ordered</li>
-    <li>Ordered</li>
-    <ol type="i">
-        <li>Sub ordered</li>
-        <li>Sub ordered</li>
-        <li>Sub ordered</li>
-    </ol>
-    <li>Ordered</li>
-</ol>
-<a 
-    href="./google-logo.png" 
-    download="google-logo.png" 
-    target="_blank"
->
-    <button>Download Google Logo</button>
-</a>
-<table border="1">
-    <tr>
-        <th colspan="2">Product</th>
-        <th colspan="2">Inventory</th>
-    </tr>
-    <tr>
-        <th>Item</th>
-        <th>Unit</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    <tr>
-        <td rowspan="3">Pen</td>
-        <td>pcs</td>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-    <tr>
-        <td rowspan="4">pcs</td>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-    <tr>
-        <td>Pen</td>
-        <th rowspan="2" colspan="2">10</th>
-    </tr>
-    <tr>
-        <td>Pen</td>
-    </tr>
-    <tr>
-        <td>Pen</td>
-        <td>pcs</td>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-    <tr>
-        <td>Pen</td>
-        <td>pcs</td>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-    <tr>
-        <td>Pen</td>
-        <td>pcs</td>
-        <td>10</td>
-        <td>0.10</td>
-    </tr>
-</table>
-<p><a href="https://google.com" target="_blank">Google</a> is a search engine</p>
-<p><b>Lorem Ipsum</b> is <i>simply</i> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p><b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p><b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-<form method="" action="">
-    <input type="search">
-    <button type="submit">Search</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork Form</title>
+</head>
+<body>
+    <form method="post" action="">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" required minlength="5">
+        <br>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required maxlength="10">
+        <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required pattern="[a-zA-Z0-9\.\_\-]+@gmail\.com">
+        <br>
+        <label for="mobileNo">Mobile number</label>
+        <input type="text" name="mobileNo" id="mobileNo" required pattern="(\+355|00355)[0-9]{9}">
+        <br>
+        <label>Genger</label>
+        <input type="radio" name="gender" value="MALE" id="genderMale" required><label for="genderMale">Male</label>
+        <input type="radio" name="gender" value="FEMALE" id="genderFemale" required><label for="genderFemale">Female</label>
+        <br>
+        <label for="birthDate">Birth date</label>
+        <input type="date" name="birthDate" id="birthDate" required max="2005-04-18">
+        <br>
+        <label for="address">Address</label>
+        <textarea name="address" id="address" required pattern="(Rr|Rruga)[A-Za-z\s]+"></textarea>
+        <br>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" required>
+        <br>
+        <label for="zipcode">Zipcode</label>
+        <input type="number" name="zipcode" id="zipcode" required>
+        <br>
+        <label for="qualification">Qualifications</label>
+        <select name="qualification" id="qualification" required>
+            <option value="">Please select one</option>
+            <option value="H">Highschool</option>
+            <option value="B">Bachelor</option>
+            <option value="M">Master</option>
+        </select>
+        <br>
+        <label for="spec">Specializations</label>
+        <input type="checkbox" name="sepc[]" value="CS" id="cs"><label for="cs">Computer Science</label>
+        <br>
+        <input type="checkbox" name="sepc[]" value="IS" id="is"><label for="is">Info Technology</label>
+        <br>
+        <input type="checkbox" name="sepc[]" value="CA" id="ca"><label for="ca">Computer Architecture</label>
+        <br>
+        <input type="checkbox" name="sepc[]" value="TC" id="tc"><label for="tc">Tele Communication</label>
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required minlength="8" maxlength="12" pattern="(?=.*[A-Z])(?=.*[\d])([\w0-9]).*">
+        <br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
