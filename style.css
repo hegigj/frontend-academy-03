@@ -1,0 +1,49 @@
+/*multiple tag selector*/
+th, td {
+    color: teal;
+    border: 1px solid black;
+}
+
+/* tag selector */
+table {
+    border: 1px solid black;
+    /* border-style: solid;
+    border-color: black; */
+    border-collapse: collapse;
+}
+
+/*child tag selector*/
+ul a {
+    text-decoration: none;
+    color: cyan;
+} 
+
+/* > direct child selector*/
+header > a {
+    color: black;
+}
+
+.btn {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    border-radius: 5px;
+    padding: .2rem .5rem;
+}
+
+.btn.success {
+    background-color: lightgreen;
+}
+
+/*assoc class style*/
+.form-control.success {
+    border: 2px solid lightgreen;
+}
+
+#faculty:invalid {
+    background-color: tomato;
+}
+
+/* td {
+    color: teal;
+} */

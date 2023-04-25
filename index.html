@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epoka | Timetable</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- embeded/internal style -->
+    <style>
+        /* selector {style object} */
+        h2 {
+            color: blue;
+        }
+
+        td {
+            color: orange;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,7 +25,9 @@
             alt="Timetable" 
             height="50px" 
         >
-        <h2>Timetable</h2>
+        <!-- inline style -->
+        <h2 style="color: red">Timetable</h2>
+        <a href="#">Demo</a>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -26,7 +40,7 @@
     <main>
         <form method="get" action="">
             <label for="faculty">Faculty</label>
-            <select name="faculty" id="faculty">
+            <select class="form-control" name="faculty" id="faculty" required>
                 <option value="">Select</option>
                 <option value="FTI">Teknologji informacion</option>
                 <option value="FAU">Arkitekture & Urbanistik</option>
@@ -36,6 +50,7 @@
             <input 
                 type="text" 
                 name="departments" 
+                class="form-control success"
                 id="departments" 
                 list="departmentsOptions"
             >
@@ -45,10 +60,11 @@
                 <option value="Urbanistike">Urbanistike</option>
             </datalist>
             <br>
-            <button type="submit">Filter</button>
+            <button class="btn danger" type="reset">Reset</button>
+            <button class="btn success" type="submit">Filter</button>
         </form>
         <br>
-        <table border="1">
+        <table>
             <tr>
                 <th rowspan="3">Day</th>
                 <th colspan="3">Seminar</th>
@@ -91,3 +107,7 @@
     </main>
 </body>
 </html>
+<!-- css -->
+<!-- inline -->
+<!-- embeded/internal -->
+<!-- external -->
