@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epoka | Timetable</title>
+</head>
+<body>
+    <header>
+        <img 
+            src="./timetable_logo.avif" 
+            alt="Timetable" 
+            height="50px" 
+        >
+        <h2>Timetable</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+        <!-- <img src="./demo.jpeg" alt="Demo" height="100px" width="200px">
+        <img src="./demo.jpeg" alt="Demo" height="100px">
+        <img src="./demo.jpeg" alt="Demo" width="100px"> -->
+    </header>
+    <main>
+        <form method="get" action="">
+            <label for="faculty">Faculty</label>
+            <select name="faculty" id="faculty">
+                <option value="">Select</option>
+                <option value="FTI">Teknologji informacion</option>
+                <option value="FAU">Arkitekture & Urbanistik</option>
+            </select>
+            <br>
+            <label for="departments">Departments</label>
+            <input 
+                type="text" 
+                name="departments" 
+                id="departments" 
+                list="departmentsOptions"
+            >
+            <datalist id="departmentsOptions">
+                <option value="Telekomunikacion">Telekomunikacion</option>
+                <option value="Arkitekture">Arkitekture</option>
+                <option value="Urbanistike">Urbanistike</option>
+            </datalist>
+            <br>
+            <button type="submit">Filter</button>
+        </form>
+    </main>
+</body>
+</html>
