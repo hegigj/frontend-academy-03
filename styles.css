@@ -11,6 +11,7 @@ body {
 header {
     /* position: relative; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--primary-color);
     color: var(--primary-text-color);
@@ -22,7 +23,7 @@ header h2 {
 }
 
 header span {
-    
+
     display: block;
     background-color: red;
     height: 10px;
@@ -59,6 +60,11 @@ header span:last-of-type {
     padding: var(--container-paddings);
 }
 
+.breadcrumb button {
+    display: none;
+    transform: rotate(90deg);
+}
+
 .breadcrumb ol {
     display: flex;
     list-style: none;
@@ -72,6 +78,42 @@ header span:last-of-type {
 
 .breadcrumb ol li:not(:first-child)::before {
     content: '>';
+}
+
+.breadcrumb div {
+    max-width: fit-content;
+}
+
+@media (max-width: 460px) {
+    .breadcrumb button {
+        display: block;
+    }
+
+    .breadcrumb ol {
+        display: none;
+    }
+
+    .breadcrumb div:hover ol {
+        display: block;
+    }
+
+    .breadcrumb ol li:not(:first-child)::before {
+        content: '|';
+    }
+}
+
+@media print {
+    header,
+    .breadcrumb,
+    aside,
+    footer,
+    body > button {
+        display: none;
+    }
+
+    main {
+        grid-template-columns: 0 100%;
+    }
 }
 
 main {
@@ -109,7 +151,7 @@ main > section {
     background-color: beige;
 }
 
-button {
+body > button {
     position: fixed;
     bottom: 30px;
     right: 30px;
