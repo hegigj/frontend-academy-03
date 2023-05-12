@@ -1,0 +1,21 @@
+header {
+    background-color: teal;
+    padding: 15px 10px;
+    display: flex;
+}
+
+.sections {
+    flex: 1 1 auto;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 8px;
+}
+
+.btn.btn-primary {
+    background-color: white;
+    color: teal;
+}
+
