@@ -1,21 +1,22 @@
 header {
-    background-color: teal;
-    padding: 15px 10px;
-    display: flex;
+  background-color: teal;
+  display: flex;
+  border-radius: 5px;
+  padding: 15px 10px;
 }
-
-.sections {
-    flex: 1 1 auto;
+header .sections {
+  flex: 1 1 auto;
+  color: white;
 }
 
 .btn {
-    border: none;
-    border-radius: 5px;
-    padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
 }
-
 .btn.btn-primary {
-    background-color: white;
-    color: teal;
+  background-color: white;
+  color: teal;
 }
 
+/*# sourceMappingURL=style.css.map */

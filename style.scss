@@ -1,0 +1,28 @@
+@import './theme.scss';
+
+@mixin border-and-padding($padding: 15px 10px) {
+    border-radius: $radius;
+    padding: $padding;
+}
+
+header {
+    background-color: $primary-color;
+    display: flex;
+    @include border-and-padding;
+
+    .sections {
+        flex: 1 1 auto;
+        color: $primary-text-color;
+    }
+}
+
+.btn {
+    border: none;
+    @include border-and-padding(5px 8px);
+
+    &.btn-primary {
+        background-color: $primary-text-color;
+        color: $primary-color;
+    }
+}
+
