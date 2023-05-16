@@ -7,6 +7,88 @@
     <title>Scss</title>
 </head>
 <body>
-    
+    <header>
+        <div class="section">
+            <a href="./index.html">Scss</a>
+        </div>
+        <div class="section right">
+            <ul>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section id="install">
+            <h2>Installation</h2>
+            <ol>
+                <li><a href="#appInstall">Application</a></li>
+                <li><a href="#cliInstall">Command Line</a></li>
+            </ol>
+            <div class="row">
+                <article class="col" id="appInstall">
+                    <h3>Application</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia modi ex quod provident ullam, tenetur impedit eius molestias voluptatibus assumenda corrupti ipsum at ipsam adipisci debitis suscipit distinctio cum excepturi.</p>
+                </article>
+                <article class="col" id="cliInstall">
+                    <h3>CLI</h3>
+                    <p>You need to install <a href="https://nodejs.org/en">Node.js</a></p>
+                    <p>You now have the ability to use <code>npm</code></p>
+                    <p>Open terminal and run command: <code>npm install -g sass</code></p>
+                </article>
+            </div>
+        </section>
+        <section id="docs">
+            <h2>Documentation</h2>
+            <ol>
+                <li><a href="#variable">Variables</a></li>
+                <li><a href="#mixin">@mixin</a></li>
+            </ol>
+            <article id="variable">
+                <h3>Variables</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius saepe tempore ipsa! Ratione quisquam voluptas possimus veritatis ducimus, quasi libero, consequatur, provident necessitatibus nobis quis. Illo minus odio quidem harum?</p>
+                <!-- <p>
+                    Hi,
+                    You
+                </p> -->
+                <pre>
+                    $color: #ffffff;
+
+                    .title {
+                        color: $color;
+                    }
+                </pre>
+            </article>
+            <article id="mixin">
+                <h3>@mixin</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora unde ea ab provident tenetur modi repellendus aut mollitia neque? Ab omnis, illo quod laborum fugit nisi expedita quibusdam adipisci voluptate.</p>
+                <pre>
+                    @mixin padding-x {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+
+                    .col {
+                        @include padding-x;
+                    }
+                </pre>
+                <pre>
+                    @mixin padding-x($left: 10px, $right: 10px) {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+
+                    .col {
+                        @include padding-x(15px);
+                    }
+
+                    .btn {
+                        @include padding-x(8px, 8px);
+                    }
+                </pre>
+            </article>
+        </section>
+    </main>
 </body>
 </html>
