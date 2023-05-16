@@ -1,0 +1,15 @@
+$primary-color: lightpink;
+$primary-contrast-color: purple;
+
+$secondary-color: lightblue;
+$secondary-contrast-color: #ff0000;
+
+$border-radius: 4px;
+
+// @mixin padding {
+//     padding: 15px 25px;
+// }
+
+@mixin padding($top-bottom: 15px, $left-right: 25px) {
+    padding: $top-bottom $left-right;
+}

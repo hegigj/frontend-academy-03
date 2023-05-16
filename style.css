@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0 0;
+}
+
+header {
+  background-color: lightpink;
+  display: flex;
+  align-items: stretch;
+  padding: 15px 25px;
+}
+header .section {
+  flex: 1 1 auto;
+}
+header .section.right > * {
+  float: right;
+}
+
+main {
+  padding: 15px 25px;
+}
+main section {
+  margin-bottom: 8px;
+}
+main section .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+main section .row .col {
+  flex: 1 1 auto;
+}
+main section p {
+  max-width: 400px;
+}
+
+/*# sourceMappingURL=style.css.map */

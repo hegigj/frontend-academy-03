@@ -1,0 +1,45 @@
+@import "./theme.scss";
+
+body {
+    margin: 0;
+    // @include padding;
+    @include padding(0, 0);
+}
+
+header {
+    background-color: $primary-color;
+    display: flex;
+    align-items: stretch;
+    @include padding();
+
+    .section {
+        flex: 1 1 auto;
+
+        &.right {
+            >* {
+                float: right;
+            }
+        }
+    }
+}
+
+main {
+    @include padding();
+
+    section {
+        margin-bottom: 8px;
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+
+            .col {
+                flex: 1 1 auto;
+            }
+        }
+
+        p {
+            max-width: 400px;
+        }
+    }
+}
