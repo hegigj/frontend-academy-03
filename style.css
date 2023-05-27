@@ -15,8 +15,18 @@ table {
 /*child tag selector*/
 ul a {
     text-decoration: none;
+    color: tomato;
+}
+
+ul:first-of-type a {
+    text-decoration: none;
     color: cyan;
 } 
+
+ul:nth-of-type(2) a {
+    text-decoration: none;
+    color: tomato;
+}
 
 /* > direct child selector*/
 header > a {
@@ -56,11 +66,15 @@ header {
 }
 
 /*assoc class style*/
-.form-control.success {
+/* .form-control.success {
     border: 2px solid lightgreen;
+} */
+
+.form-control:valid {
+    border: 2px solid green;
 }
 
-#faculty:invalid {
+#faculty:focus:invalid {
     background-color: tomato;
 }
 
@@ -102,6 +116,10 @@ tr:nth-child(2n-1) {
 ul {
     display: flex;
     list-style: none;
+}
+
+ul:first-of-type {
+    list-style: disc;
 }
 
 /* ul > li:not(:last-child) {
