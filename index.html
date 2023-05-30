@@ -5,8 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro to Javascript</title>
+    <script>
+        var name = 'Frontend';
+        // es6
+        let classroom = 'Salla 2';
+        classroom = 2;
+        const classroomCapacity = 15;
+        // classroomCapacity = 18;
+
+        // Datatypes
+        // - Primitive
+        // -- String
+        let firstName = 'Hegi';
+        // firstName = 3;
+        let lastName = "Gjoka";
+        let fullName = `${firstName} .${lastName}`;
+        fullName = firstName + ' .' + lastName;
+        console.log('fullName: ', fullName, typeof fullName);
+        // -- Number
+        let num = 1; // int
+        num = 1.5; // float
+        num = 1e+15; // bigint
+        console.log('num: ', num, typeof num);
+        // -- Boolean
+        let lightsOn = true;
+        lightsOn = false;
+        console.log('ligthsOn: ', lightsOn, typeof lightsOn);
+        // -- undefined
+        let occupiedRoom;
+        console.log('occupiedRoom: ', occupiedRoom, typeof occupiedRoom);
+        // -- null
+        const noValue = null;
+        console.log('noValue: ', noValue, typeof noValue);
+        // Primitive datatypes in memory
+        let x = 3;
+        let y = x;
+        x = 4;
+        console.log(x, y);
+        // - Referantial
+        // -- Array
+        let grades = [5, 4, 3, 5, 2, 0];
+        grades = ['5', 4, '3', 5, 2, 0, 'NA', undefined];
+        grades = new Array(5, 4, 3, 5, 'NA', 0);
+        const ages = [19, 18, 23, 26, 30, 21];
+        const copyAges = ages;
+        ages.push(20);
+        console.log(ages, copyAges);
+        console.log('ages: ', ages, typeof ages);
+        console.log('ages is an array: ', ages instanceof Array);
+        // -- Objects (JSON)
+        const course = {
+            courseName: 'Frontend',
+            classroom: 2,
+            start: '19:30',
+            end: '21:00',
+            finished: false,
+            students: [
+                {
+                    firstName: 'Rei',
+                    lastName: 'Rota'
+                }
+            ]
+        };
+        console.log(course);
+        console.log('course: ', course, typeof course);
+        console.log('course is an array: ', course instanceof Array);
+
+        // Statements
+        // if else
+        let time = '21:01';
+        if (time < course.start) {
+            console.log('course didn\'t started yet');
+        } else if (course.start <= time && course.end >= time) {
+            console.log('course started');
+        } else {
+            console.log('course ended');
+        }
+        // switch case
+        switch(course.classroom) {
+            case 1:
+                console.log('Salla 1');
+                break;
+            case 2:
+                console.log('Salla 2');
+                break;
+            case 3:
+                console.log('Salla 3');
+                break;
+            default:
+                console.log('Ska salla te lira');
+        }
+        // ternary
+        console.log(course.finished ? 'Ka mbaruar' : 'Ska mbaruar');
+        if (course.finished) {
+            console.log('Ka mabruar');
+        } else {
+            // console.log('Ska mbaruar');
+            if (course.end >= time) {
+                console.log('Ska mbaruar');
+            } else {
+                console.log('Ka mbaruar');
+            }
+        }
+        course.finished 
+            ? 'Ka mbaruar' 
+            : course.end >= time 
+                ? 'Ska mabuar' 
+                : 'Ka mbaurar';
+    </script>
 </head>
 <body>
-    
+    <h1>Title</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum suscipit, enim delectus earum quam sunt! Vitae nam rerum officiis autem quibusdam! Repellendus tenetur ullam maxime quis, deleniti soluta modi atque?</p>
+    <button>Read more...</button>
+    <script>
+
+    </script>
 </body>
 </html>
