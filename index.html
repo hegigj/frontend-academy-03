@@ -47,7 +47,7 @@
         let grades = [5, 4, 3, 5, 2, 0];
         grades = ['5', 4, '3', 5, 2, 0, 'NA', undefined];
         grades = new Array(5, 4, 3, 5, 'NA', 0);
-        const ages = [19, 18, 23, 26, 30, 21];
+        const ages = [19, 18, 17, 23, 26, 30, 21];
         const copyAges = ages;
         ages.push(20);
         console.log(ages, copyAges);
@@ -112,6 +112,103 @@
             : course.end >= time 
                 ? 'Ska mabuar' 
                 : 'Ka mbaurar';
+
+        // Loops
+        // for
+        // for (let index = 0;index < 3;index = index + 1) {
+        // for (let index = 0;index < 3;index += 1) {
+        for (let index = 0;index < 3;index++) {
+            console.log(ages[index]);
+        }
+        const pixels = [0,0,0,10,10,10,50,50,50,10,10,10,50,50,50,80,80,80];
+        for (let i = 0;i < pixels.length;i+=3) {
+            const red = pixels[i];
+            const green = pixels[i+1];
+            const blue = pixels[i+2];
+
+            console.log(`rgb(${red},${green},${blue})`);
+        }
+        let i = 0;
+        for (;i < ages.length;) {
+            console.log(ages[i]);
+            i++;
+        }
+        // break, continue
+        for (let i = 0;i < ages.length;i++) {
+            console.log(i);
+            if (ages[i] < 18) {
+                console.log('Can not enter in pub');
+                break;
+            }
+        }
+        for (let i = 0; i < ages.length;i++) {
+            if (ages[i] < 18) {
+                continue;
+            }
+            console.log(ages[i]);
+        }
+        // while
+        const albanianPalindrome = 'takovanjeavokat';
+        let startPointer = 0;
+        let endPointer = albanianPalindrome.length - 1;
+        while (startPointer < endPointer) {
+            if (albanianPalindrome[startPointer] != albanianPalindrome[endPointer]) {
+                console.log(`${albanianPalindrome} nuk eshte nje palindrome`);
+                break;
+            }
+            startPointer++;
+            endPointer--;
+        }
+        // const numbers = [];
+        // let number = 1;
+        // while (number != 0) {
+        //     number = prompt('Enter a number:');
+        //     numbers.push(number);
+        // }
+        // console.log(numbers);
+        // do while
+        let timeInUnix = 2106;
+        do {
+            console.log(timeInUnix);
+            timeInUnix++;
+        } while (timeInUnix <= 2100);
+        // for in
+        for (let index in ages) {
+            if (index % 2 == 1) // let 3 / 2 = 1(mbetja) (% kthen mbetjen e nje pjestimi)
+                continue;
+
+            console.log(index);
+        }
+        for (const key in course) {
+            console.log(key);
+        }
+        // for of
+        for (const elementValue of ages) {
+            console.log(elementValue);
+        }
+
+        // Functions
+        function showTime() { // return type = void
+            console.log(new Date().getMinutes());
+        }
+
+        showTime();
+        // console.log(showTime());
+        // Simple functions
+        // Pure functions
+        function add(a, b) { // return type = number
+            if ((typeof a) == 'number' && (typeof b) == 'number') {
+                return a + b;
+            } else {
+                throw new TypeError('Argument a or b is not a number');
+            }
+        }
+        console.log(add(1,2));
+        console.log(add('1', '3'));
+        // Higher-order functions
+        // Curring/Factory functions
+        // Arrow functions
+        // Annonimous functions
     </script>
 </head>
 <body>
