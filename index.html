@@ -60,8 +60,23 @@
         }
         // return newArray;
     }
+
+    function myFilter(array, handlerFunction) {
+        const newArray = [];
+
+        for (let i  = 0; i < array.length; i++) {
+            if (handlerFunction(array[i], i, array)) {
+                newArray.push(array[i]);
+            }
+        }
+
+        return newArray;
+    }
     myMap(grades, (grade, i, arr) => grade < 10 ? grade + 1 : grade);
     console.log('Mutated in place grades: ', grades);
+    // const passingGrades = myFilter(grades, (grade, index, gradesArray) => {
+    //     return grade >= 8;
+    // });
     const passingGrades = grades.filter((grade, index, gradesArray) => {
         return grade >= 8;
     });
