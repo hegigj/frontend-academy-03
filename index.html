@@ -5,16 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro to Javascript</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            transition: 300ms;
+        }
+    </style>
     <script>
-        
+        // const h1Element = document.querySelector('h1');
+        // console.log(h1Element);
+
+        function log(e) {
+            console.log('LOG EVENT: ', e);
+        }
     </script>
 </head>
 <body>
-    <h1>Title</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum suscipit, enim delectus earum quam sunt! Vitae nam rerum officiis autem quibusdam! Repellendus tenetur ullam maxime quis, deleniti soluta modi atque?</p>
-    <button>Read more...</button>
+    <div>
+        <h1 onmouseover="log(event)">Title</h1>
+        <p></p>
+        <button onclick="readMore(event)">Read more</button>
+    </div>
     <script>
+        // body
+        //  |
+        //  --> div
+        //       |
+        //       --> h1
+        //       |
+        //       --> p
+        //       |
+        //       --> button
 
+        const h1Element = document.querySelector('h1');
+        console.log(h1Element);
+
+        const text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum suscipit, enim delectus earum quam sunt! Vitae nam rerum officiis autem quibusdam! Repellendus tenetur ullam maxime quis, deleniti soluta modi atque?'
+        // const pElements = document.getElementsByTagName('p'); // => [ p ];
+        // const pElement = pElements[0];
+
+        // Array destructuring
+        const [ pElement ] = document.getElementsByTagName('p');
+        pElement.innerText = text.slice(0, Math.floor(text.length / 2)) + '...';
+
+        function readMore(event) {
+            const buttonElement = event.target;
+
+            // Object destructuring
+            const { innerText: buttonText } = buttonElement;
+            // const buttonText = buttonElement.innerText;
+            
+            switch(buttonText) {
+                case 'Read more':
+                    pElement.innerText = text;
+                    buttonElement.innerText = 'Read less';
+                    break;
+                case 'Read less':
+                    pElement.innerText = text.slice(0, Math.floor(text.length / 2)) + '...';
+                    buttonElement.innerText = 'Read more';
+                    break;
+            }
+
+            // p tag style attribute
+            // pElement.style.backgroundColor = 'yellow';
+            // pElement.style.transition = '300 ms';
+
+            // p tag class attribute
+            // pElement.className = 'highlight';
+
+            // p dom element classList property
+            // pElement.classList.add('highlight');
+            // pElement.classList.contains('');
+            // pElement.classList.remove('');
+            pElement.classList.toggle('highlight');
+
+            // pElement.id = 'p1';
+        }
     </script>
 </body>
 </html>
