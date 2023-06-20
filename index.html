@@ -5,16 +5,124 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro to Javascript</title>
+    <style>
+        li:nth-of-type(2) {
+            color: lightblue;
+        }
+        .form-control {
+            border-radius: 4px;
+            border: 2px solid black;
+        }
+        .not-allowed {
+            border: 2px solid red;
+        }
+    </style>
     <script>
-        
+        // const h1Element = document.querySelector('h1');
+        // console.log(h1Element);
+
+        function alertModal(event) {
+            console.log(event);
+            alert('Alerting!!! ' + event);
+        }
+
+        function focusAlert() {
+            alert('You are focusing an element');
+        }
+
+        function blurAlert() {
+            alert('You are swiching focus to a different element');
+        }
+
+        function keyupAlert(event) {
+            console.log(event);
+            alert('You are typing: ' + event.key);
+        }
     </script>
 </head>
 <body>
-    <div>
-        
-    </div>
+    <h1 title="Title descriptions...">Title</h1>
+    <form method="get">
+        <label for="search">Search</label>
+        <!-- <input type="search" name="search" id="search" onfocus="focusAlert()"> -->
+        <!-- <input type="search" name="search" id="search" onblur="blurAlert()"> -->
+        <!-- <input type="search" name="search" id="search" onkeyup="keyupAlert(event)"> -->
+        <input type="search" name="search" id="search" class="form-control">
+        <!-- <button class="btn btn-success" type="button" onclick="alertModal(event)">Search</button> -->
+        <button class="btn btn-success" type="button">Search</button>
+    </form>
+    <ul>
+        <li>Itme 1</li>
+        <li>Itme 2</li>
+        <li>Itme 3</li>
+        <li>Itme 4</li>
+    </ul>
+    <!-- <button class="btn" onclick="alertModal()">Show more</button> -->
+    <button class="btn">Show more</button>
     <script>
-        
+        // querySelector gets only one element (the first element)
+        const h1Element = document.querySelector('h1');
+        // console.log(h1Element);
+
+        // getElementById gets only one element that matches the id given (since id must be unique in a html page)
+        // const searchInputElement = document.getElementById('search');
+        // console.log(searchInputElement);
+
+        const btnElements = document.getElementsByClassName('btn');
+        console.log(btnElements);
+        const [searchButtonElement, showMoreButtonElement] = btnElements;
+        console.log(searchButtonElement, showMoreButtonElement);
+
+        // const liElements = document.getElementsByTagName('li');
+        // console.log(liElements);
+
+        const liElements = document.querySelectorAll('li');
+        console.log(liElements);
+        // for (const li of liElements) {
+        //     li.addEventListener('click', (event) => {
+        //         console.log('element: ', event.target.innerText);
+        //         console.log('element type: ', event.target.nodeName);
+        //     });
+        // }
+
+        const ulElement = document.querySelector('ul');
+        ulElement.addEventListener('click', (event) => {
+            console.log('event target type: ', event.target.nodeName);
+        });
+
+        const li2Element = document.querySelector('li:nth-of-type(2)');
+        console.log(li2Element);
+
+        const searchInputElement = document.querySelector('#search');
+        console.log(searchInputElement);
+
+        searchInputElement.addEventListener('keyup', (event) => {
+            if (event instanceof KeyboardEvent) {
+                console.log('keyup: ', event.key);
+                // const target = event.target;
+                const { target } = event;
+                console.log('input type: ', target.type);
+                console.log('input name: ', target.name);
+                console.log('input value: ', target.value);
+                if (target.value === 'hegi') {
+                    // target.style.border = '2px solid red';
+
+                    // target.className = 'not-allowed';
+                    target.classList.add('not-allowed')
+                } else {
+                    // target.style.border = 'unset';
+
+                    // target.className = '';
+                    target.classList.remove('not-allowed');
+                }
+            }
+        });
+
+        const buttonElements = document.querySelectorAll('.btn');
+        // for (const buttonElement of buttonElements) {
+        //     buttonElement.onclick = alertModal;   
+        // }
+        console.log(buttonElements);
     </script>
 </body>
 </html>
