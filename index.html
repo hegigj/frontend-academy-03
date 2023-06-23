@@ -26,7 +26,27 @@
     <label for="textBox">Text box</label>
     <input type="text" name="paragraph" id="textBox">
     <p></p>
+    <hr>
+    <h3>Form</h3>
+    <form>
+        <label for="firstName">First name:</label>
+        <input type="text" name="firstName" id="firstName">
+        <br>
+        <label for="lastName">Last name:</label>
+        <input type="text" name="lastName" id="lastName">
+        <br>
+        <label for="birthDate">Birthdate:</label>
+        <input type="date" name="birthDate" id="birthDate">
+        <br>
+        <label>Gender:</label>
+        <br>
+        <input type="radio" name="gender" value="M" id="opt1"><label for="opt1">Male</label>
+        <input type="radio" name="gender" value="F" id="opt2"><label for="opt2">Female</label>
+        <br>
+        <button type="submit">Save</button>
+    </form>
     <script>
+        // Change title
         const titleElement = document.querySelector('h1');
         const changeTitleInput = document.getElementById('title');
         // const changeTitleButton = document.getElementsByTagName('button')[0];
@@ -44,6 +64,17 @@
                 changeTitleInput.value = '';
             }
         });
+
+        // Write paragraph
+        const textBoxElement = document.getElementById('textBox');
+        const paragraphElement = document.querySelector('p');
+
+        textBoxElement.addEventListener('keyup', (event) => {
+            const input = event.target; // srcElement
+            const value = input.value;
+
+            paragraphElement.innerText = value;
+        })
     </script>
 </body>
 </html>
