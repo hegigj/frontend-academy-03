@@ -21,5 +21,29 @@
         <br>
         <button type="button">Change Title</button>
     </div>
+    <hr>
+    <h2>Write paragraph</h2>
+    <label for="textBox">Text box</label>
+    <input type="text" name="paragraph" id="textBox">
+    <p></p>
+    <script>
+        const titleElement = document.querySelector('h1');
+        const changeTitleInput = document.getElementById('title');
+        // const changeTitleButton = document.getElementsByTagName('button')[0];
+        const [changeTitleButton] = document.getElementsByTagName('button');
+
+        changeTitleButton.addEventListener('click', () => {
+            // const value = changeTitleInput.value;
+            const { value } = changeTitleInput;
+
+            if (value && value.length > 0) {
+                titleElement.innerText = value;
+
+                // reset value
+                // value = '';
+                changeTitleInput.value = '';
+            }
+        });
+    </script>
 </body>
 </html>
