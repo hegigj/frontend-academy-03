@@ -9,7 +9,36 @@
         
     </style>
     <script>
-        
+        // User form
+        function handleFormSubmit(event) {
+            if (event instanceof SubmitEvent) {
+                event.preventDefault();
+
+                const form = event.target;
+            
+                const formData = new FormData(form);
+
+                const data = {};
+
+                for (const formName of formData.keys()) {
+                    console.log(formName);
+                    // data[formName] = formData.get(formName);
+                    let value = formData.getAll(formName);
+                    if (value.length > 1) {
+                        data[formName] = value;
+                    } else {
+                        data[formName] = value[0];
+                    }
+                }
+
+                for (const formValue of formData.values()) {
+                    console.log(formValue);
+                }
+
+                // console.log(formData.get('gender'));
+                console.log(data);
+            }
+        } 
     </script>
 </head>
 <body>
@@ -28,7 +57,7 @@
     <p></p>
     <hr>
     <h3>Form</h3>
-    <form>
+    <form onsubmit="handleFormSubmit(event)">
         <label for="firstName">First name:</label>
         <input type="text" name="firstName" id="firstName">
         <br>
@@ -42,6 +71,11 @@
         <br>
         <input type="radio" name="gender" value="M" id="opt1"><label for="opt1">Male</label>
         <input type="radio" name="gender" value="F" id="opt2"><label for="opt2">Female</label>
+        <br>
+        <label>Education:</label>
+        <br>
+        <input type="checkbox" name="edu" value="BA" id="check1"><label for="check1">Bachelor</label>
+        <input type="checkbox" name="edu" value="MP" id="check2"><label for="check2">Master P</label>
         <br>
         <button type="submit">Save</button>
     </form>
@@ -74,7 +108,7 @@
             const value = input.value;
 
             paragraphElement.innerText = value;
-        })
+        });
     </script>
 </body>
 </html>
