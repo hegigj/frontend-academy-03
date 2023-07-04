@@ -8,7 +8,28 @@
     <style>
         
     </style>
-    <script></script>
+    <script>
+        function httpRequest(method, url, headerMap, responseHandler) {
+            const http = new XMLHttpRequest();
+
+            http.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    const response = JSON.parse(this.response);
+
+                    responseHandler(response);
+                }
+            };
+
+            http.open(method, url);
+
+            http.setRequestHeader('Accept', 'application/json');
+            for (const headerName of headerMap.keys()) {
+                http.setRequestHeader(headerName, headerMap.get(headerName));
+            }
+
+            http.send();
+        }
+    </script>
 </head>
 <body>
     <form action="" method="get">
