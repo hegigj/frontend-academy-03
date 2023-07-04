@@ -34,30 +34,52 @@
 <body>
     <form action="" method="get">
         <label for="country">Country</label>
-        <select name="country" id="country"></select>
+        <select name="country" id="country">
+            <option value="">Select...</option>
+        </select>
+        <br>
+        <label for="state">State</label>
+        <select name="state" id="state">
+            <option value="">Select...</option>
+        </select>
     </form>
     <script>
         const apiToken = '2n-__D3JK1ykprTvekJ5QWq3KIuTnnWyMISwqvAPx5z3E4FtzBfFUFlTDUpJTtQ4vzk';
         const userEmail = 'hgjoka16@gmail.com';
 
+        const countriSelectInput = document.getElementById('country');
+        const stateSelectInput = document.getElementById('state');
+
         function getCountries(token) {
-            const http = new XMLHttpRequest();
+            const headers = new Map();
+            headers.set('Authorization', 'Bearer ' + token);
 
-            http.open('GET', 'https://www.universal-tutorial.com/api/countries');
-            http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader('Authorization', 'Bearer ' + token);
+            httpRequest(
+                'GET',
+                'https://www.universal-tutorial.com/api/countries',
+                headers,
+                (response) => {
+                    console.log(response);
 
-            http.send();
+                    for (const country of response) {
+                        const countryOption = document.createElement('option');
+                        countryOption.value = country.country_name;
+                        countryOption.innerText = country.country_name;
+
+                        countriSelectInput.appendChild(countryOption);
+                    }
+                }
+            );
         }
 
-        function getAccessToken() {
+        function getAccessToken(authutorizedRequest) {
             const http = new XMLHttpRequest();
 
             http.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     const response = JSON.parse(this.response);
-                    getCountries(response.auth_token);
-                    console.log(response);
+                    
+                    authutorizedRequest(response.auth_token);
                 }
             };
 
@@ -69,9 +91,39 @@
             http.send();
         }
 
-        getAccessToken();
+        getAccessToken(getCountries);
 
-        // getCountries();
+        function getStates(country) {
+            return (token) => {
+                const headers = new Map();
+                headers.set('Authorization', 'Bearer ' + token);
+
+                httpRequest(
+                    'GET',
+                    'https://www.universal-tutorial.com/api/states/' + country,
+                    headers,
+                    (response) => {
+                        console.log(response);
+
+                        for (const state of response) {
+                            const stateOption = document.createElement('option');
+                            stateOption.value = state.state_name;
+                            stateOption.innerText = state.state_name;
+
+                            stateSelectInput.appendChild(stateOption);
+                        }
+                    }
+                );
+            };
+        }
+
+        countriSelectInput.addEventListener('change', event => {
+            const country = event.target.value;
+
+            getAccessToken(getStates(country));
+        });
+
+        // Beni te njejten gje per cities
     </script>
 </body>
 </html>
