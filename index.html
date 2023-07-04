@@ -8,107 +8,13 @@
     <style>
         
     </style>
-    <script>
-        // User form
-        function handleFormSubmit(event) {
-            if (event instanceof SubmitEvent) {
-                event.preventDefault();
-
-                const form = event.target;
-            
-                const formData = new FormData(form);
-
-                const data = {};
-
-                for (const formName of formData.keys()) {
-                    console.log(formName);
-                    // data[formName] = formData.get(formName);
-                    let value = formData.getAll(formName);
-                    if (value.length > 1) {
-                        data[formName] = value;
-                    } else {
-                        data[formName] = value[0];
-                    }
-                }
-
-                for (const formValue of formData.values()) {
-                    console.log(formValue);
-                }
-
-                // console.log(formData.get('gender'));
-                console.log(data);
-            }
-        } 
-    </script>
+    <script></script>
 </head>
 <body>
-    <h1>Title</h1>
-    <div>
-        <h2>Chnage Title</h2>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-        <br>
-        <button type="button">Change Title</button>
-    </div>
-    <hr>
-    <h2>Write paragraph</h2>
-    <label for="textBox">Text box</label>
-    <input type="text" name="paragraph" id="textBox">
-    <p></p>
-    <hr>
-    <h3>Form</h3>
-    <form onsubmit="handleFormSubmit(event)">
-        <label for="firstName">First name:</label>
-        <input type="text" name="firstName" id="firstName">
-        <br>
-        <label for="lastName">Last name:</label>
-        <input type="text" name="lastName" id="lastName">
-        <br>
-        <label for="birthDate">Birthdate:</label>
-        <input type="date" name="birthDate" id="birthDate">
-        <br>
-        <label>Gender:</label>
-        <br>
-        <input type="radio" name="gender" value="M" id="opt1"><label for="opt1">Male</label>
-        <input type="radio" name="gender" value="F" id="opt2"><label for="opt2">Female</label>
-        <br>
-        <label>Education:</label>
-        <br>
-        <input type="checkbox" name="edu" value="BA" id="check1"><label for="check1">Bachelor</label>
-        <input type="checkbox" name="edu" value="MP" id="check2"><label for="check2">Master P</label>
-        <br>
-        <button type="submit">Save</button>
+    <form action="" method="get">
+        <label for="country">Country</label>
+        <select name="country" id="country"></select>
     </form>
-    <script>
-        // Change title
-        const titleElement = document.querySelector('h1');
-        const changeTitleInput = document.getElementById('title');
-        // const changeTitleButton = document.getElementsByTagName('button')[0];
-        const [changeTitleButton] = document.getElementsByTagName('button');
-
-        changeTitleButton.addEventListener('click', () => {
-            // const value = changeTitleInput.value;
-            const { value } = changeTitleInput;
-
-            if (value && value.length > 0) {
-                titleElement.innerText = value;
-
-                // reset value
-                // value = '';
-                changeTitleInput.value = '';
-            }
-        });
-
-        // Write paragraph
-        const textBoxElement = document.getElementById('textBox');
-        const paragraphElement = document.querySelector('p');
-
-        textBoxElement.addEventListener('keyup', (event) => {
-            const input = event.target; // srcElement
-            const value = input.value;
-
-            paragraphElement.innerText = value;
-        });
-    </script>
+    <script></script>
 </body>
 </html>
