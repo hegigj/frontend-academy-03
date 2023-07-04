@@ -15,6 +15,42 @@
         <label for="country">Country</label>
         <select name="country" id="country"></select>
     </form>
-    <script></script>
+    <script>
+        const apiToken = '2n-__D3JK1ykprTvekJ5QWq3KIuTnnWyMISwqvAPx5z3E4FtzBfFUFlTDUpJTtQ4vzk';
+        const userEmail = 'hgjoka16@gmail.com';
+
+        function getCountries(token) {
+            const http = new XMLHttpRequest();
+
+            http.open('GET', 'https://www.universal-tutorial.com/api/countries');
+            http.setRequestHeader('Accept', 'application/json');
+            http.setRequestHeader('Authorization', 'Bearer ' + token);
+
+            http.send();
+        }
+
+        function getAccessToken() {
+            const http = new XMLHttpRequest();
+
+            http.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    const response = JSON.parse(this.response);
+                    getCountries(response.auth_token);
+                    console.log(response);
+                }
+            };
+
+            http.open('GET', 'https://www.universal-tutorial.com/api/getaccesstoken');
+            http.setRequestHeader('Accept', 'application/json');
+            http.setRequestHeader('api-token', apiToken);
+            http.setRequestHeader('user-email', userEmail);
+
+            http.send();
+        }
+
+        getAccessToken();
+
+        // getCountries();
+    </script>
 </body>
 </html>
