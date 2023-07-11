@@ -51,69 +51,90 @@
         const stateSelectInput = document.getElementById('state');
 
         function getCountries(token) {
-            const headers = new Map();
-            headers.set('Authorization', 'Bearer ' + token);
-
-            httpRequest(
-                'GET',
-                'https://www.universal-tutorial.com/api/countries',
-                headers,
-                (response) => {
-                    console.log(response);
-
-                    for (const country of response) {
+            fetch('https://www.universal-tutorial.com/api/countries', {
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Bearer ' + token
+                }
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((countries) => {
+                for (const country of countries) {
                         const countryOption = document.createElement('option');
                         countryOption.value = country.country_name;
                         countryOption.innerText = country.country_name;
 
                         countriSelectInput.appendChild(countryOption);
                     }
-                }
-            );
+            });
         }
 
         function getAccessToken(authutorizedRequest) {
-            const http = new XMLHttpRequest();
-
-            http.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    const response = JSON.parse(this.response);
-                    
-                    authutorizedRequest(response.auth_token);
+            fetch(
+                'https://www.universal-tutorial.com/api/getaccesstoken',
+                {
+                   method: 'GET',
+                   headers: {
+                        Accept: 'application/json',
+                        'api-token': apiToken,
+                        'user-email': userEmail
+                   }
                 }
-            };
+            )
+            .then((response) => {
+                return response.json();
+            })
+            .then((text) => {
+                authutorizedRequest(text.auth_token);
+            });
+            // .catch(console.error);
 
-            http.open('GET', 'https://www.universal-tutorial.com/api/getaccesstoken');
-            http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader('api-token', apiToken);
-            http.setRequestHeader('user-email', userEmail);
+            // return new Promise((resolve, reject) => {
+            //     const http = new XMLHttpRequest();
 
-            http.send();
+            //     http.onreadystatechange = function () {
+            //         if (this.readyState === 4 && this.status === 200) {
+            //             const response = JSON.parse(this.response);
+            //             reject(response);
+            //         }
+            //     };
+
+            //     http.open('GET', 'https://www.universal-tutorial.com/api/getaccesstoken');
+            //     http.setRequestHeader('Accept', 'application/json');
+            //     http.setRequestHeader('api-token', apiToken);
+            //     http.setRequestHeader('user-email', userEmail);
+
+            //     http.send();
+            // });
         }
 
+        // getAccessToken(getCountries).catch(response => {
+        //     getCountries(response.auth_token);
+        // });
         getAccessToken(getCountries);
 
         function getStates(country) {
             return (token) => {
-                const headers = new Map();
-                headers.set('Authorization', 'Bearer ' + token);
-
-                httpRequest(
-                    'GET',
-                    'https://www.universal-tutorial.com/api/states/' + country,
-                    headers,
-                    (response) => {
-                        console.log(response);
-
-                        for (const state of response) {
-                            const stateOption = document.createElement('option');
-                            stateOption.value = state.state_name;
-                            stateOption.innerText = state.state_name;
-
-                            stateSelectInput.appendChild(stateOption);
-                        }
+                fetch('https://www.universal-tutorial.com/api/states/' + country, {
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: 'Bearer ' + token
                     }
-                );
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((states) => {
+                    for (const state of states) {
+                        const stateOption = document.createElement('option');
+                        stateOption.value = state.state_name;
+                        stateOption.innerText = state.state_name;
+
+                        stateSelectInput.appendChild(stateOption);
+                    }
+                });
             };
         }
 
