@@ -8,34 +8,13 @@
     <style>
         
     </style>
-    <script>
-        function httpRequest(method, url, headerMap, responseHandler) {
-            const http = new XMLHttpRequest();
-
-            http.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    const response = JSON.parse(this.response);
-
-                    responseHandler(response);
-                }
-            };
-
-            http.open(method, url);
-
-            http.setRequestHeader('Accept', 'application/json');
-            for (const headerName of headerMap.keys()) {
-                http.setRequestHeader(headerName, headerMap.get(headerName));
-            }
-
-            http.send();
-        }
-    </script>
 </head>
 <body>
     <form action="" method="get">
         <label for="country">Country</label>
         <select name="country" id="country">
             <option value="">Select...</option>
+            <option value="test">test</option>
         </select>
         <br>
         <label for="state">State</label>
@@ -71,8 +50,8 @@
             });
         }
 
-        function getAccessToken(authutorizedRequest) {
-            fetch(
+        async function getAccessToken() {
+            const response = await fetch(
                 'https://www.universal-tutorial.com/api/getaccesstoken',
                 {
                    method: 'GET',
@@ -82,66 +61,55 @@
                         'user-email': userEmail
                    }
                 }
-            )
-            .then((response) => {
-                return response.json();
-            })
-            .then((text) => {
-                authutorizedRequest(text.auth_token);
+            );
+
+            const accessToken = await response.json();
+
+            if ('auth_token' in accessToken) {
+                return accessToken.auth_token;
+            }
+
+            throw new Error(accessToken.error);
+        }
+
+        // getAccessToken().then(getCountries);
+        getAccessToken()
+        .then((auth_token) => {
+            getCountries(auth_token);
+        })
+        .catch(console.log);
+
+        async function getStates(country, token) {
+            const response = await fetch('https://www.universal-tutorial.com/api/states/' + country, {
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Bearer ' + token
+                }
             });
-            // .catch(console.error);
 
-            // return new Promise((resolve, reject) => {
-            //     const http = new XMLHttpRequest();
+            const states = await response.json();
 
-            //     http.onreadystatechange = function () {
-            //         if (this.readyState === 4 && this.status === 200) {
-            //             const response = JSON.parse(this.response);
-            //             reject(response);
-            //         }
-            //     };
+            for (const state of states) {
+                const stateOption = document.createElement('option');
+                stateOption.value = state.state_name;
+                stateOption.innerText = state.state_name;
 
-            //     http.open('GET', 'https://www.universal-tutorial.com/api/getaccesstoken');
-            //     http.setRequestHeader('Accept', 'application/json');
-            //     http.setRequestHeader('api-token', apiToken);
-            //     http.setRequestHeader('user-email', userEmail);
-
-            //     http.send();
-            // });
+                stateSelectInput.appendChild(stateOption);
+            }
         }
 
-        // getAccessToken(getCountries).catch(response => {
-        //     getCountries(response.auth_token);
-        // });
-        getAccessToken(getCountries);
-
-        function getStates(country) {
-            return (token) => {
-                fetch('https://www.universal-tutorial.com/api/states/' + country, {
-                    headers: {
-                        Accept: 'application/json',
-                        Authorization: 'Bearer ' + token
-                    }
-                })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((states) => {
-                    for (const state of states) {
-                        const stateOption = document.createElement('option');
-                        stateOption.value = state.state_name;
-                        stateOption.innerText = state.state_name;
-
-                        stateSelectInput.appendChild(stateOption);
-                    }
-                });
-            };
-        }
-
-        countriSelectInput.addEventListener('change', event => {
+        countriSelectInput.addEventListener('change', async (event) => {
             const country = event.target.value;
 
-            getAccessToken(getStates(country));
+            let token;
+
+            try {
+                token = await getAccessToken();
+            } catch (error) {
+                alert(error);
+            } finally {
+                if (token) getStates(country, token);
+            }
         });
 
         // Beni te njejten gje per cities
