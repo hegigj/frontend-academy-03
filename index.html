@@ -10,6 +10,108 @@
     </style>
 </head>
 <body>
-    <script></script>
+    <img src="" alt="loading..." width="80px">
+    <span></span>
+
+    <script>
+        const add = (a, b) => {
+            const sum = a + b;
+            // console.log(sum);
+            return sum;
+        };
+
+        // add(2,3);
+
+        // 1
+        // setTimeout(() => add(2,3), 2000);
+
+        const delay = (timeout) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (timeout % 2 == 0) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                }, timeout);
+            });
+        };
+
+        // 2
+        // delay(2000).then(() => add(2,3));
+        // delay(3000).then(() => add(3,3));
+        // delay(4000).then(() => add(4,5));
+
+        async function onLoad() {
+            let sum = 0;
+            await delay(2000);
+            sum = add(sum,4);
+            await delay(3000);
+            sum = add(sum,3);
+            await delay(4000);
+            sum = add(sum,5);
+            return sum;
+        }
+
+        // onLoad();
+
+        async function addAfter5s(a, b) {
+            await delay(5000);
+            return add(a, b);
+        }
+
+        // addAfter5s(10,11);
+
+        // Promise.all([onLoad(), addAfter5s(20, 10)])
+        // .then((allFns) => {
+        //     console.log('onLoad: ', allFns[0]);
+        //     console.log('addAfter5s: ', allFns[1]);
+        // });
+
+        // Promise.race([onLoad(), addAfter5s(20,10)]).then(console.log);
+
+        // add(5,5);
+
+        //---------------------------------------
+        const getUsername = async () => {
+            await delay(1000);
+            return 'John Doe';
+        };
+
+        const getUserProfilePicture = async () => {
+            await delay(3000);
+            return './profile_pic.avif';
+        };
+
+        const imgEl = document.querySelector('img');
+        const spanEl = document.querySelector('span');
+
+        // imgEl.src = getUserProfilePicture();
+        // spanEl.innerText = getUsername();
+
+        // getUserProfilePicture().then(
+        //     (src) => imgEl.src = src
+        // );
+
+        // getUsername().then((username) => spanEl.innerText = username);
+
+        Promise.all([getUserProfilePicture(), getUsername()]).then(
+            (allResults) => {
+                const [profiePic, username] = allResults;
+
+                imgEl.src = profiePic;
+                spanEl.innerText = username;
+            }
+        )
+
+        // Promise.race([getUserProfilePicture(), getUsername()]).then(
+        //     (allResults) => {
+        //         const [profiePic, username] = allResults;
+
+        //         imgEl.src = profiePic;
+        //         spanEl.innerText = username;
+        //     }
+        // )
+    </script>
 </body>
 </html>
